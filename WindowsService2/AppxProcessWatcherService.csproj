@@ -7,7 +7,7 @@
     <ProjectGuid>{7BCA3011-0219-4987-BC76-C47A7556D892}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsService2</RootNamespace>
-    <AssemblyName>WindowsService2</AssemblyName>
+    <AssemblyName>AppxProcessWatcherService</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

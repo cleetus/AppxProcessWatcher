@@ -1,4 +1,4 @@
-﻿namespace WindowsService2
+﻿namespace AppxProcessWatcherService
 {
     partial class ProjectInstaller
     {

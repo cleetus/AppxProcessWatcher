@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace WindowsService2
+namespace AppxProcessWatcherService
 {
     public partial class Service1 : ServiceBase
     {

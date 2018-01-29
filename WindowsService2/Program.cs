@@ -5,7 +5,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsService2
+namespace AppxProcessWatcherService
 {
     static class Program
     {

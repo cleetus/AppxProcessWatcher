@@ -7,18 +7,22 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
 
-namespace AppxProcessWatcherService
+namespace MdiAppxApi
 {
-    public partial class Service1 : ServiceBase
+    public partial class AppxApiProcessService : ServiceBase
     {
-        public System.Threading.Timer AppxTimer;
+        System.Threading.Timer AppxTimer;
         EventLog AppxAPILog;
 
-        public Service1()
+        public AppxApiProcessService()
         {
             InitializeComponent();
+            // Create an EventLog instance and assign its source.
+            AppxAPILog = new EventLog
+            {
+                Source = "AppxAPI"
+            };
         }
 
         protected override void OnStart(string[] args)
@@ -33,17 +37,20 @@ namespace AppxProcessWatcherService
                 // The source is created.  Exit the application to allow it to be registered.
                 //return;
             }
-
-            // Create an EventLog instance and assign its source.
-            AppxAPILog = new EventLog();
-            AppxAPILog.Source = "AppxAPI";
+            AppxAPILog.WriteEntry("AppxApi Watcher Started");
+            //int interval = 10000;//Default
+            //int.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("timer_interval"), out interval);//60000;
+            //AppxTimer.Interval = 1000;//interval;
+            //AppxTimer.Enabled = true;
+            //TimeSpan tsInterval = new TimeSpan(0, 0, 3);
+            //AppxTimer = new System.Threading.Timer(new System.Threading.TimerCallback(AppxTimer_Elapsed), null, tsInterval, tsInterval);
 
             try
             {
 
 
                 // Write an informational entry to the event log.    
-                AppxAPILog.WriteEntry("AppxApi Watcher Started");
+                //AppxAPILog.WriteEntry("AppxApi Watcher Started");
                 //int interval = 10000;//Default
                 //int.TryParse(System.Configuration.ConfigurationManager.AppSettings.Get("timer_interval"), out interval);//60000;
                 TimeSpan tsInterval = new TimeSpan(0, 0, 3);
@@ -54,37 +61,30 @@ namespace AppxProcessWatcherService
             {
                 AppxAPILog.WriteEntry(ex.Message);
             }
-
-        }
-
-        private void AppxTimer_Elapsed(object state)
-        {
-            throw new NotImplementedException();
         }
 
         protected override void OnStop()
         {
-            AppxTimer.Dispose();
             AppxAPILog.WriteEntry("AppxApi Watcher Stopped");
         }
 
-        public void AppxTimer_Elasped(object sender)
+        private void AppxTimer_Elapsed(object sender)
         {
-            AppxAPILog.WriteEntry("AppxApi - Checking for processes");
-            /*
             Process[] p = null;
             string process_name = "appxapi";
 
             try
             {
-                AppxAPILog.WriteEntry("AppxApi - Checking for processes");          
+                AppxAPILog.WriteEntry("AppxApi - Checking for processes");
                 process_name = System.Configuration.ConfigurationManager.AppSettings.Get("process_name");
                 p = System.Diagnostics.Process.GetProcessesByName(process_name);
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 AppxAPILog.WriteEntry(ex.Message);
             }
 
+            /*
             foreach (Process x in p)
             {
                 try
@@ -107,8 +107,7 @@ namespace AppxProcessWatcherService
                 }
             }
             */
-        }
 
+        }
     }
 }
-

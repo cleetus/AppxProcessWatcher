@@ -1,6 +1,6 @@
-﻿namespace AppxProcessWatcherService
+﻿namespace TestAppx
 {
-    partial class Service1
+    partial class TestAppx
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,14 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.TestAppxTimer = new System.Windows.Forms.Timer(this.components);
             // 
-            // Service1
+            // TestAppxTimer
             // 
-            this.ServiceName = "AppxProcessWatcher";
+            this.TestAppxTimer.Enabled = true;
+            this.TestAppxTimer.Interval = 1000;
+            this.TestAppxTimer.Tick += new System.EventHandler(this.TestAppxTimer_Tick);
+            // 
+            // TestAppx
+            // 
+            this.CanPauseAndContinue = true;
+            this.ServiceName = "TestAppxService";
 
         }
 
         #endregion
 
+        public System.Windows.Forms.Timer TestAppxTimer;
     }
 }

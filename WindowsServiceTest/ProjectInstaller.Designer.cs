@@ -1,4 +1,4 @@
-﻿namespace AppxProcessWatcherService
+﻿namespace WindowsServiceTest
 {
     partial class ProjectInstaller
     {
@@ -39,8 +39,7 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.ServiceName = "AppxProcessWatcher";
-            this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+            this.serviceInstaller1.ServiceName = "Service1";
             // 
             // ProjectInstaller
             // 

@@ -1,6 +1,6 @@
-﻿namespace AppxProcessWatcherService
+﻿namespace MdiAppxApi
 {
-    partial class Service1
+    partial class AppxApiProcessService
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             // 
-            // Service1
+            // AppxApiProcessService
             // 
-            this.ServiceName = "AppxProcessWatcher";
+            this.ServiceName = "AppxApiProcessService";
 
         }
 
         #endregion
-
     }
 }
